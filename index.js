@@ -116,22 +116,14 @@ async function main() {
       {
         title: "Naruto",
         link: "https://en.wikipedia.org/wiki/List_of_Naruto_episodes",
-        headers: [],
+        headers: ["Animation directed by", "English air date"],
         anime: true,
-        excludes: [],
+        excludes: ["No. in season"],
       },
-      // {
-      //   title: "Naruto Shipudden",
-      //   link: "https://en.wikipedia.org/wiki/List_of_Naruto:_Shippuden_episodes",
-      // },
-      // {
-      //   title: "Boruto: Naruto Next Generations",
-      //   link: "https://en.wikipedia.org/wiki/List_of_Boruto:_Naruto_Next_Generations_episodes",
-      // },
       {
         title: "Game of Thrones",
         link: "https://en.wikipedia.org/wiki/List_of_Game_of_Thrones_episodes",
-        headers: [],
+        headers: ["U.S. viewers (millions)"],
         anime: false,
         excludes: [],
       },
