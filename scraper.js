@@ -90,7 +90,12 @@ function processData(data, info, fileName) {
       h = toCamelCase(h);
       info.headers.map((header) => {
         let head = toCamelCase(header);
-        if (head.toLowerCase() === h.toLowerCase()) {
+        let lowerHead = head.toLowerCase();
+        let lowerh = h.toLowerCase();
+        if (
+          lowerHead === lowerh ||
+          (lowerHead === "title" && lowerh.indexOf(lowerHead) !== -1)
+        ) {
           indexes[head] = idx;
         }
         return header;
@@ -118,20 +123,20 @@ function processData(data, info, fileName) {
           title.indexOf(" (Japanese: ") !== -1
         ) {
           const split = title.split("Transliteration: ");
-          english = split[0].slice(1, split[0].length - 1);
+          english = split[0].slice(1, split[0].length).trim();
           const splitt = split[1].split(" (Japanese: ");
-          japanese = splitt[0].slice(1, splitt[0].length - 1);
-          transliteration = splitt[1].slice(0, splitt[1].length - 1);
+          japanese = splitt[0].slice(1, splitt[0].length).trim();
+          transliteration = splitt[1].slice(0, splitt[1].length - 1).trim();
         } else if (title.indexOf("Transliteration: ") !== -1) {
           const split = title.split("Transliteration: ");
-          english = split[0].slice(1, split[0].length - 1);
-          transliteration = split[1].slice(0, split[1].length - 1);
+          english = split[0].slice(1, split[0].length).trim();
+          transliteration = split[1].slice(0, split[1].length - 1).trim();
         } else if (title.indexOf(" (Japanese: ") !== -1) {
           const split = title.split(" (Japanese: ");
-          english = split[0].slice(1, split[0].length - 1);
-          japanese = split[1].slice(0, split[1].length - 1);
+          english = split[0].slice(1, split[0].length).trim();
+          japanese = split[1].slice(0, split[1].length).trim();
         } else {
-          english = title;
+          english = title.trim();
         }
         scraped = {
           ...scraped,
