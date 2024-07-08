@@ -12,6 +12,9 @@ function askQuestion(query) {
 
     rl.question(chalk.yellow(query), (answer) => {
       rl.close();
+      if (answer === "EXIT") {
+        process.exit(0);
+      }
       resolve(answer);
     });
   });
