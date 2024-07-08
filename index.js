@@ -49,7 +49,10 @@ async function details(headers) {
   console.log(chalk.bold("\nSupply the following information to begin."));
   const title = await askQuestion("Title: ");
   let anime = await askQuestion("Is this a Series or an Anime (1 or 2): ");
-  while (anime && anime.toLowerCase() !== "1" && anime.toLowerCase() !== "2") {
+  while (
+    !anime ||
+    (anime.toLowerCase() !== "1" && anime.toLowerCase() !== "2")
+  ) {
     anime = await askQuestion("Is this a Series or an Anime (1 or 2): ");
   }
   anime = anime.toLowerCase() === "2" ? true : false;
@@ -147,7 +150,7 @@ async function main() {
       chalk.bgRed(
         " You can type the",
         chalk.bold("EXIT"),
-        "keyword anytime to end execution "
+        "keyword anytime to exit the process "
       )
     );
 
